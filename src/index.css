@@ -1,0 +1,60 @@
+/* Global base styles and theme tokens. Light is the default; dark is applied by data-theme on the app root. */
+:root {
+  --text: #3c3847;
+  --text-heading: #08060d;
+  --bg: #ffffff;
+  --surface: #f6f5f9;
+  --border: #c9c6d1;
+  --accent: #5b2bd6;
+  --accent-contrast: #ffffff;
+  --success: #1b6e3a;
+  --success-bg: #e3f5ea;
+  --danger: #a4262c;
+  --focus: #1f4fd1;
+
+  font-family: system-ui, 'Segoe UI', Roboto, sans-serif;
+  font-size: 16px;
+  line-height: 1.45;
+  color: var(--text);
+  background: var(--bg);
+  color-scheme: light;
+  -webkit-font-smoothing: antialiased;
+}
+
+[data-theme='dark'] {
+  --text: #d4d2dc;
+  --text-heading: #f3f4f6;
+  --bg: #16171d;
+  --surface: #20212a;
+  --border: #5a5d6e;
+  --accent: #b38cff;
+  --accent-contrast: #14121c;
+  --success: #7ee0a0;
+  --success-bg: #1d3327;
+  --danger: #ff8a8f;
+  --focus: #9ec1ff;
+  color-scheme: dark;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}

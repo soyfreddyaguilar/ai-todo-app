@@ -1,0 +1,274 @@
+/* Mobile-first layout (320px+). Breakpoints at 768px (tablet) and 1024px (desktop). */
+.app {
+  min-height: 100vh;
+  padding: 16px;
+  color: var(--text);
+  background: var(--bg);
+}
+
+.app-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.app-header h1 {
+  margin: 0;
+  font-size: 1.75rem;
+  color: var(--text-heading);
+}
+
+.app-main {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 100%;
+}
+
+/* Form */
+.task-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.field label {
+  font-weight: 600;
+  color: var(--text-heading);
+}
+
+.field input,
+.field textarea,
+.task-edit input,
+.task-edit textarea {
+  width: 100%;
+  min-height: 44px;
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--bg);
+  color: var(--text-heading);
+}
+
+.field textarea,
+.task-edit textarea {
+  min-height: 44px;
+  resize: vertical;
+}
+
+.field input[aria-invalid='true'],
+.field textarea[aria-invalid='true'] {
+  border-color: var(--danger);
+  box-shadow: 0 0 0 1px var(--danger);
+}
+
+.counter {
+  font-size: 0.875rem;
+}
+
+.counter.over-limit {
+  color: var(--danger);
+  font-weight: 600;
+}
+
+/* Buttons: minimum 44x44px touch targets */
+.primary-button,
+.secondary-button,
+.filter-button,
+.delete-button,
+.theme-toggle,
+.toast-dismiss {
+  min-width: 44px;
+  min-height: 44px;
+  padding: 8px 14px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--bg);
+  color: var(--text-heading);
+  cursor: pointer;
+}
+
+.primary-button {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-contrast);
+  font-weight: 600;
+}
+
+.primary-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.filter-button.active {
+  border-color: var(--accent);
+  box-shadow: inset 0 -3px 0 var(--accent);
+  font-weight: 600;
+}
+
+.delete-button {
+  color: var(--danger);
+}
+
+/* Filters */
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* List */
+.task-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.task-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-left-width: 4px;
+  border-radius: 8px;
+  background: var(--bg);
+}
+
+.task-checkbox {
+  width: 44px;
+  height: 44px;
+  margin: 0;
+  flex-shrink: 0;
+  accent-color: var(--success);
+}
+
+.task-body {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.task-title {
+  align-self: flex-start;
+  min-height: 44px;
+  padding: 8px 0;
+  border: none;
+  background: none;
+  color: var(--text-heading);
+  font-size: 1rem;
+  text-align: left;
+  overflow-wrap: anywhere;
+  cursor: pointer;
+}
+
+.task-description {
+  overflow-wrap: anywhere;
+  font-size: 0.9375rem;
+}
+
+.task-edit {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Completed state: strikethrough text plus a green indicator (colour is not the only cue). */
+.task-item.completed {
+  border-left-color: var(--success);
+  background: var(--success-bg);
+}
+
+.task-item.completed .task-title,
+.task-item.completed .task-description {
+  text-decoration: line-through;
+  color: var(--success);
+}
+
+.empty-state {
+  padding: 24px 16px;
+  border: 1px dashed var(--border);
+  border-radius: 8px;
+  text-align: center;
+}
+
+/* Toasts */
+.toast-container {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  left: 16px;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.toast {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text-heading);
+}
+
+.toast-error {
+  border-color: var(--danger);
+}
+
+/* Tablet and up */
+@media (min-width: 768px) {
+  .app {
+    padding: 24px;
+  }
+
+  .task-form {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-end;
+  }
+
+  .task-form .field:first-child,
+  .task-form .field:nth-child(2) {
+    flex: 1 1 240px;
+  }
+
+  .toast-container {
+    left: auto;
+    width: 360px;
+  }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+  .app {
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  .app-header h1 {
+    font-size: 2.25rem;
+  }
+}
